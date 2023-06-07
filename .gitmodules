@@ -1,15 +1,12 @@
 [submodule "SDL"]
-	path = SDL
+	path = submodules/SDL
 	url = https://github.com/libsdl-org/SDL.git
 [submodule "imgui"]
-	path = imgui
+	path = submodules/imgui
 	url = https://github.com/ocornut/imgui.git
 [submodule "glm"]
-	path = glm
+	path = submodules/glm
 	url = https://github.com/g-truc/glm.git
-[submodule "glad"]
-	path = glad
-	url = https://github.com/Dav1dde/glad.git
 [submodule "stb"]
-	path = stb
+	path = submodules/stb
 	url = https://github.com/nothings/stb.git
