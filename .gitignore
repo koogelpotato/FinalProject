@@ -1,0 +1,11 @@
+!/.gitignore
+*.iml
+local.properties
+*.user
+imgui.ini
+
+build/
+cmake-build-debug/
+build-Debug/
+build-Default/
+build-Release/
