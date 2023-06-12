@@ -18,6 +18,8 @@ add_library(image_engine
     game.cpp
     game-object.cpp
     game-object.hpp
+    sound.cpp 
+    sound.hpp
 )
 
 add_library(loader

@@ -6,7 +6,6 @@
 
 #include "texture.hpp"
 #include "shader.hpp"
-#include "ImGui.hpp"
 
 class Sprite_Renderer
 {
