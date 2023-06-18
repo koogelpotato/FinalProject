@@ -20,6 +20,8 @@ add_library(image_engine
     game-object.hpp
     sound.cpp 
     sound.hpp
+    game-level.cpp
+    game-level.hpp
 )
 
 add_library(loader
@@ -41,3 +43,8 @@ target_link_libraries(image_engine PRIVATE imgui_pack)
 add_executable(image main.cpp)
 
 target_link_libraries(image PRIVATE image_engine)
+
+file(COPY resources/textures DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+file(COPY resources/sounds DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+file(COPY resources/shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+file(COPY resources/levels DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)

@@ -17,7 +17,16 @@ Game Test(SCREEN_WIDTH, SCREEN_HEIGHT);
 SDL_Window* window;
 SDL_GLContext gl_context;
 
-bool shouldCloseWindow = false;
+
+void GLAPIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity,
+                                GLsizei length, const GLchar* message, const void* userParam)
+{
+    fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+            (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+            type, severity, message);
+}
+
+/*bool shouldCloseWindow = false;
 
 void HandleEvents()
 {
@@ -30,7 +39,7 @@ void HandleEvents()
             shouldCloseWindow = true;
         }
     }
-}
+}*/
 
 int main(int argc, char* argv[])
 {
@@ -75,7 +84,7 @@ int main(int argc, char* argv[])
     SDL_ShowWindow(window);
     glGetError();
 
-    IMGUI_CHECKVERSION();
+    /*IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
@@ -85,13 +94,13 @@ int main(int argc, char* argv[])
     ImGui::StyleColorsDark();
 
     ImGui_ImplSDL3_InitForOpenGL(window, gl_context);
-    ImGui_ImplOpenGL3_Init("#version 300 es");
+    ImGui_ImplOpenGL3_Init("#version 300 es");*/
 
     bool showFigure = false;
 
-    Resource_Manager::load_shader("/home/koogel/Final Project/final/imgui-shader.vs", "/home/koogel/Final Project/final/imgui-shader.frag", "UI");
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(SCREEN_WIDTH),
-                                      static_cast<float>(SCREEN_HEIGHT), 0.0f, -1.0f, 1.0f);
+    //Resource_Manager::load_shader("resources/shaders/imgui-shader.vs", "resources/shaders/imgui-shader.frag", "UI");
+    //glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(SCREEN_WIDTH),
+                                      //static_cast<float>(SCREEN_HEIGHT), 0.0f, -1.0f, 1.0f);
 
     Test.init_game();
     glGetError();
@@ -101,6 +110,11 @@ int main(int argc, char* argv[])
     unsigned int last_frame = 0;
     double delta_time = 0;
 
+
+    SDL_Event event;
+
+    glEnable(GL_DEBUG_OUTPUT);
+    glDebugMessageCallback(MessageCallback, 0);
     while (is_running)
     {
         last_frame = current_frame;
@@ -108,14 +122,16 @@ int main(int argc, char* argv[])
 
         delta_time = (double)((current_frame - last_frame) * 1000 / (double)SDL_GetPerformanceFrequency());
 
-        HandleEvents(); // Handle SDL events
+        //HandleEvents(); // Handle SDL events
 
-        ImGui_ImplOpenGL3_NewFrame();
+        /*ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplSDL3_NewFrame();
         ImGui::NewFrame();
 
-        ImVec2 mainWindowSize = ImVec2(1000, 600);
+        ImVec2 mainWindowSize = ImVec2(SCREEN_WIDTH/4, SCREEN_HEIGHT/4);
+        ImVec2 uiPos = ImVec2(SCREEN_WIDTH/4,SCREEN_HEIGHT/4);
         ImGui::SetNextWindowSize(mainWindowSize);
+        ImGui::SetWindowPos(uiPos);
         ImGui::Begin("TestGui");
 
         if (ImGui::Button("Show Figure"))
@@ -142,12 +158,53 @@ int main(int argc, char* argv[])
             }
             SDL_DestroyWindow(figureWindow);
             SDL_GL_MakeCurrent(window, gl_context);
+        }*/
+
+        if(is_running == false)
+            std::cout << "closing application" << std::endl;
+
+        //ImGui::End();
+
+        //ImGui::Render();
+        while(SDL_PollEvent(&event))
+        {
+             switch(event.type)
+        {
+        case SDL_EVENT_QUIT:
+        {
+            is_running = false;
+            break;
         }
-        ImGui::End();
+        case SDL_EVENT_KEY_DOWN:
+        {
+            switch (event.key.keysym.sym)
+            {
+                case SDLK_a:
+                case SDLK_d:
+                case SDLK_w:
+                case SDLK_s:
+                    Test.proccess_input(event, true);
+            }
+        
+        break;
+        }
+        case SDL_EVENT_KEY_UP:
+        {
+            switch (event.key.keysym.sym)
+            {
+                case SDLK_a:
+                case SDLK_d:
+                case SDLK_w:
+                case SDLK_s:
+                    Test.proccess_input(event, false);
+            }
+        
+        break;
+        }
+        }
+        }
 
-        ImGui::Render();
-
-        Test.proccess_input(delta_time);
+        Test.update_player_input(delta_time);
         Test.update(delta_time);
 
         glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
@@ -155,19 +212,19 @@ int main(int argc, char* argv[])
 
         Test.render();
 
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        //ImGui::Render();
+        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         SDL_GL_SwapWindow(window);
     }
+    
+        Resource_Manager::clear();
+        //ImGui_ImplOpenGL3_Shutdown();
+        //ImGui_ImplSDL3_Shutdown();
+        //ImGui::DestroyContext();
 
-    Resource_Manager::clear();
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplSDL3_Shutdown();
-    ImGui::DestroyContext();
-
-    SDL_GL_DeleteContext(gl_context);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 0;
+        SDL_GL_DeleteContext(gl_context);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 0;
 }
