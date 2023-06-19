@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-const unsigned int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_WIDTH = 600;
 const unsigned int SCREEN_HEIGHT = 600;
 
 Game Test(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -179,6 +179,7 @@ int main(int argc, char* argv[])
         {
             switch (event.key.keysym.sym)
             {
+                case SDLK_SPACE:
                 case SDLK_a:
                 case SDLK_d:
                 case SDLK_w:
@@ -192,6 +193,7 @@ int main(int argc, char* argv[])
         {
             switch (event.key.keysym.sym)
             {
+                case SDLK_SPACE:
                 case SDLK_a:
                 case SDLK_d:
                 case SDLK_w:

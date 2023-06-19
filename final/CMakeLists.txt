@@ -22,6 +22,8 @@ add_library(image_engine
     sound.hpp
     game-level.cpp
     game-level.hpp
+    ball-object.cpp
+    ball-object.hpp
 )
 
 add_library(loader

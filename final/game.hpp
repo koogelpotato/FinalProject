@@ -15,8 +15,15 @@ enum GameState
     GAME_EXIT
 };
 
-const glm::vec2 PLAYER_SIZE(150.0f, 20.0f);
-const float     PLAYER_VELOCITY(100.0f);
+
+enum direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+};
+
+typedef std::tuple<bool,direction, glm::vec2> collision;
 
 class Game
 {
@@ -33,4 +40,5 @@ public:
     void update_player_input(float dt);
     void update(float dt);
     void render();
+    void perform_collisions();
 };

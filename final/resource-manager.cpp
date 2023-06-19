@@ -24,10 +24,9 @@ Shader& Resource_Manager::get_shader(std::string name)
 }
 
 Texture Resource_Manager::load_texture(const char* file,
-                                       bool        alpha,
                                        std::string name)
 {
-    textures[name] = load_texture_from_file(file, alpha);
+    textures[name] = load_texture_from_file(file);
     return textures[name];
 }
 
@@ -80,18 +79,29 @@ Shader Resource_Manager::load_shader_from_file(const char* vertex_shader_file,
     return shader;
 }
 
-Texture Resource_Manager::load_texture_from_file(const char* file, bool alpha)
+Texture Resource_Manager::load_texture_from_file(const char* file)
 {
 
     Texture texture;
-    if (alpha)
-    {
-        texture.internal_format = GL_RGBA;
-        texture.image_format    = GL_RGBA;
-    }
 
     int            width, height, nrChannels;
     unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
+
+    if (data == nullptr)
+    {
+        // TODO: Better error handling
+        assert(false);
+        return texture;
+    }
+
+    switch (nrChannels)
+    {
+        case 1: texture.internal_format = texture.image_format = GL_RED; break;
+        case 2: texture.internal_format = texture.image_format = GL_RG; break;
+        case 3: texture.internal_format = texture.image_format = GL_RGB; break;
+        case 4: texture.internal_format = texture.image_format = GL_RGBA; break;
+        default: assert(false); return texture; // TODO: Better error handling
+    }
 
     texture.generate(width, height, data);
 

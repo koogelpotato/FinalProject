@@ -70,6 +70,7 @@ void Game_Level::init(std::vector<std::vector<unsigned int>> tile_data,
                                 Resource_Manager::get_texture(
                                     "block"),
                                 glm::vec3(0.8f, 0.8f, 0.7f));
+                obj.is_solid = true;
                 this->bricks.push_back(obj);
             }
             else if (tile_data[y][x] > 1)
@@ -100,5 +101,6 @@ void Game_Level::init(std::vector<std::vector<unsigned int>> tile_data,
                     pos, size, Resource_Manager::get_texture("block"), color));
             }
         }
+
     }
 }

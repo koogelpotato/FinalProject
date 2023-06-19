@@ -20,7 +20,7 @@ public:
 
     static Shader& get_shader(std::string name);
 
-    static Texture load_texture(const char* file, bool alpha, std::string name);
+    static Texture load_texture(const char* file, std::string name);
 
     static Texture& get_texture(std::string name);
 
@@ -32,5 +32,5 @@ private:
     static Shader load_shader_from_file(const char* vertex_shader_file,
                                         const char* fragment_shader_file);
 
-    static Texture load_texture_from_file(const char* file, bool alpha);
+    static Texture load_texture_from_file(const char* file);
 };
