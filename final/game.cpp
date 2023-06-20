@@ -54,12 +54,14 @@ void Game::init_game()
     Resource_Manager::load_texture("resources/textures/block.png", "block");
     Resource_Manager::load_texture("resources/textures/paddle.png", "paddle");
     Resource_Manager::load_texture("resources/textures/circle.png", "ball");
-    //Resource_Manager::load_texture("resources/textures/background_scaled.jpg", true, "background");
+    //Resource_Manager::load_texture("resources/textures/logo.png", "logo");
     Game_Level level_1;
     level_1.load("resources/levels/one.lvl", this->width, this->height / 2);
+    Game_Level level_2;
+    level_2.load("resources/levels/two.lvl", this->width, this->height / 2);
 
     this->levels.push_back(level_1);
-
+    this->levels.push_back(level_2);
     this->current_level = 0;
 
     glm::vec2 playerPos = glm::vec2(this->width / 2.0f - PLAYER_SIZE.x / 2.0f,
@@ -75,6 +77,12 @@ void Game::update(float dt)
 {
     ball->move(dt, this->width);
     this->perform_collisions();
+
+    if(ball->position.y >= this->height)
+    {
+        this->reset_level();
+        this->reset_player();
+    }
 }
 
 void Game::proccess_input(SDL_Event event, bool is_key_down)
@@ -120,6 +128,21 @@ void Game::render()
         player->draw(*renderer);
         ball->draw(*renderer);
     }
+}
+
+void Game::reset_level()
+{
+    if(this->current_level == 0)
+        this->levels[0].load("resources/levels/one.lvl", this-> width, this->height / 2);
+    else if(this ->current_level == 1)
+        this->levels[1].load("resources/levels/two.lvl", this-> width, this->height / 2);
+}
+
+void Game::reset_player()
+{
+    player->size = PLAYER_SIZE;
+    player->position = glm::vec2(this->width / 2.0f - PLAYER_SIZE.x / 2.0f, this->height - PLAYER_SIZE.y);
+    ball->reset(player->position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
 
 bool check_collision(Game_Object &one, Game_Object &two);

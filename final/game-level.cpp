@@ -42,7 +42,7 @@ void Game_Level::draw(Sprite_Renderer& renderer)
 bool Game_Level::isCompleted()
 {
     for (Game_Object& tile : this->bricks)
-        if (!tile.is_solid && tile.destroyed)
+        if (!tile.is_solid && !tile.destroyed)
             return false;
     return true;
 }

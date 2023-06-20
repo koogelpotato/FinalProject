@@ -41,4 +41,6 @@ public:
     void update(float dt);
     void render();
     void perform_collisions();
+    void reset_level();
+    void reset_player();
 };
