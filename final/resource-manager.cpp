@@ -8,6 +8,7 @@
 
 std::map<std::string, Texture> Resource_Manager::textures;
 std::map<std::string, Shader>  Resource_Manager::shaders;
+std::map<std::string, Sound> Resource_Manager::sounds;
 
 Shader Resource_Manager::load_shader(const char* vertex_shader_file,
                                      const char* fragment_shader_file,
@@ -33,6 +34,15 @@ Texture Resource_Manager::load_texture(const char* file,
 Texture& Resource_Manager::get_texture(std::string name)
 {
     return textures[name];
+}
+
+Sound Resource_Manager::load_sound(const char* file, std::string name, uint32_t device_, SDL_AudioSpec audio_spec) {
+    sounds[name] = load_sound_from_file(file, device_, audio_spec);
+    return sounds[name];
+}
+
+Sound& Resource_Manager::get_sound(std::string name) {
+    return sounds[name];
 }
 
 void Resource_Manager::clear()
@@ -107,4 +117,10 @@ Texture Resource_Manager::load_texture_from_file(const char* file)
 
     stbi_image_free(data);
     return texture;
+}
+
+Sound Resource_Manager::load_sound_from_file(const char* file, uint32_t device_, SDL_AudioSpec audio_spec) {
+    Sound sound;
+    sound.generate_sound(file, device_, audio_spec);
+    return sound;
 }

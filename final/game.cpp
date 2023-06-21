@@ -3,6 +3,7 @@
 #include "resource-manager.hpp"
 #include "sprite-renderer.hpp"
 #include "ball-object.hpp"
+#include "sound-player.hpp"
 
 
 const glm::vec2 PLAYER_SIZE(150.0f, 20.0f);
@@ -13,6 +14,7 @@ const float BALL_RADIUS = 12.5f;
 Sprite_Renderer* renderer;
 Game_Object*     player;
 Ball_Object* ball;
+Sound_Player* audio_player;
 
 
 Game::Game(unsigned int width, unsigned int height)
@@ -29,6 +31,8 @@ Game::~Game()
     delete player;
     delete ball;
 }
+
+void init_audio();
 
 void Game::init_game()
 {
@@ -71,6 +75,25 @@ void Game::init_game()
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
 
     ball = new Ball_Object(ballPos,BALL_RADIUS, INITIAL_BALL_VELOCITY, Resource_Manager::get_texture("ball"));
+
+
+    SDL_AudioSpec desired_spec;
+    desired_spec.freq = 44100;
+    desired_spec.format = SDL_AUDIO_S16;
+    desired_spec.channels = 2;
+    desired_spec.samples = 512;
+    desired_spec.callback = NULL;
+
+    uint32_t device = SDL_OpenAudioDevice(NULL, 0, &desired_spec, NULL, 0);
+    if (device == 0) {
+        printf("Failed to open audio device! SDL_Error: %s\n", SDL_GetError());
+    }
+
+    Resource_Manager::load_sound("resources/sounds/through-space.wav", "theme", device, desired_spec);
+
+    audio_player = new Sound_Player();
+    audio_player->load_sound(Resource_Manager::get_sound("theme"));
+    audio_player->play_sound(Resource_Manager::get_sound("theme"));
 }
 
 void Game::update(float dt)
@@ -83,6 +106,8 @@ void Game::update(float dt)
         this->reset_level();
         this->reset_player();
     }
+
+    audio_player->play_sound(Resource_Manager::get_sound("theme"));
 }
 
 void Game::proccess_input(SDL_Event event, bool is_key_down)
@@ -252,3 +277,4 @@ direction vector_direction(glm::vec2 target)
 
     return (direction)best_match;
 }
+

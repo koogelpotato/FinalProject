@@ -1,6 +1,7 @@
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_audio.h>
 #include "imgui_pack/imgui.h"
 #include "imgui_pack/imgui_impl_opengl3.h"
 #include "imgui_pack/imgui_impl_sdl3.h"
@@ -30,11 +31,17 @@ void render_main_menu();
 
 int main(int argc, char* argv[])
 {
-    const int sdl_init = SDL_Init(SDL_INIT_VIDEO);
-    if (sdl_init != 0)
+    const int sdl_init_video = SDL_Init(SDL_INIT_VIDEO);
+    if (sdl_init_video != 0)
     {
-        std::cerr << "error SDL_Init: " << SDL_GetError() << std::endl;
+        std::cerr << "error SDL_INIT_VIDEO: " << SDL_GetError() << std::endl;
         return -1;
+    }
+
+    const int  sdl_init_audio = SDL_Init(SDL_INIT_AUDIO);
+    if(sdl_init_audio != 0)
+    {
+        std::cerr << "error SDL_INIT_AUDIO: " << SDL_GetError() << std::endl;
     }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
@@ -108,7 +115,7 @@ int main(int argc, char* argv[])
         current_frame = SDL_GetPerformanceCounter();
 
         delta_time = (double)((current_frame - last_frame) * 1000 / (double)SDL_GetPerformanceFrequency());
-
+        
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplSDL3_NewFrame();
         ImGui::NewFrame();
@@ -123,10 +130,6 @@ int main(int argc, char* argv[])
         {
             show_ui = false;
         }
-
-        if(is_running == false)
-            std::cout << "closing application" << std::endl;
-
         ImGui::End();
         
         while(SDL_PollEvent(&event))

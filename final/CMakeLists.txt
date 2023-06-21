@@ -24,8 +24,13 @@ add_library(image_engine
     game-level.hpp
     ball-object.cpp
     ball-object.hpp
+    audio-buffer.cpp
+    audio-buffer.hpp
+    sound.cpp
+    sound.hpp
+    sound-player.cpp
+    sound-player.hpp
 )
-
 add_library(loader
     stb_image.h
     stb_image.cpp
