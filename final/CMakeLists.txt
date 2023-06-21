@@ -18,18 +18,12 @@ add_library(image_engine
     game.cpp
     game-object.cpp
     game-object.hpp
-    sound.cpp 
-    sound.hpp
     game-level.cpp
     game-level.hpp
     ball-object.cpp
     ball-object.hpp
-    audio-buffer.cpp
-    audio-buffer.hpp
-    sound.cpp
-    sound.hpp
-    sound-player.cpp
-    sound-player.hpp
+    sound-manager.cpp
+    sound-manager.hpp
 )
 add_library(loader
     stb_image.h
@@ -48,6 +42,8 @@ target_link_libraries(image_engine PRIVATE SDL3::SDL3-shared OpenGL::GL)
 target_link_libraries(image_engine PRIVATE imgui_pack)
 
 add_executable(image main.cpp)
+
+target_compile_features(image PRIVATE cxx_std_17)
 
 target_link_libraries(image PRIVATE image_engine)
 

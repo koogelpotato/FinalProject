@@ -4,6 +4,7 @@
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 #include <SDL3/SDL.h>
+#include "sound-manager.hpp"
 
 #include <map>
 
@@ -43,4 +44,8 @@ public:
     void perform_collisions();
     void reset_level();
     void reset_player();
+    void deinit();
+private:
+    uint32_t device;
+    Sound_Manager m_audio_player;
 };

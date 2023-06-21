@@ -14,7 +14,7 @@
 const unsigned int SCREEN_WIDTH = 600;
 const unsigned int SCREEN_HEIGHT = 600;
 
-Game Test(SCREEN_WIDTH, SCREEN_HEIGHT);
+
 SDL_Window* window;
 SDL_GLContext gl_context;
 
@@ -94,6 +94,8 @@ int main(int argc, char* argv[])
     //Resource_Manager::load_shader("resources/shaders/imgui-shader.vs", "resources/shaders/imgui-shader.frag", "UI");
     //glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(SCREEN_WIDTH),
                                       //static_cast<float>(SCREEN_HEIGHT), 0.0f, -1.0f, 1.0f);
+                                      
+    Game Test(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     Test.init_game();
     glGetError();

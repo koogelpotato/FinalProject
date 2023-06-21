@@ -10,7 +10,8 @@
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "cppStandard": "c++17"
         }
     ],
     "version": 4
