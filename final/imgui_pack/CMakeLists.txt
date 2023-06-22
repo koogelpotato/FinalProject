@@ -27,3 +27,5 @@ set(IMGUI_SOURCES
 add_library(imgui_pack ${IMGUI_SOURCES})
 
 target_include_directories(imgui_pack PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_include_directories(imgui_pack PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../submodules/SDL/include)

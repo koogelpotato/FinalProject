@@ -1,0 +1,78 @@
+diff --git a/.gitignore b/.gitignore
+index 97cece8..4511319 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,7 +4,7 @@ local.properties
+ *.user
+ imgui.ini
+ 
+-build/
++.build/
+ cmake-build-debug/
+ build-Debug/
+ build-Default/
+diff --git a/final/CMakeLists.txt b/final/CMakeLists.txt
+index 1471dfc..8b56ed1 100644
+--- a/final/CMakeLists.txt
++++ b/final/CMakeLists.txt
+@@ -1,6 +1,9 @@
+ cmake_minimum_required(VERSION 3.26)
+ project(project_engine)
+ 
++add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../submodules/SDL
++                 ${CMAKE_BINARY_DIR}/SDL)
++
+ add_subdirectory(imgui_pack)
+ 
+ add_library(image_engine
+@@ -32,13 +35,13 @@ add_library(loader
+ 
+ target_link_libraries(image_engine PRIVATE loader)
+ 
+-find_package(SDL3 REQUIRED)
++# find_package(SDL3 REQUIRED)
+ 
+ find_package(OpenGL REQUIRED)
+ 
+ target_include_directories(image_engine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/glm)
+ 
+-target_link_libraries(image_engine PRIVATE SDL3::SDL3-shared OpenGL::GL)
++target_link_libraries(image_engine PUBLIC SDL3::SDL3-shared OpenGL::GL)
+ target_link_libraries(image_engine PRIVATE imgui_pack)
+ 
+ add_executable(image main.cpp)
+diff --git a/final/game.cpp b/final/game.cpp
+index 2790a67..c493a24 100644
+--- a/final/game.cpp
++++ b/final/game.cpp
+@@ -130,15 +130,12 @@ void Game::init_game()
+                            INITIAL_BALL_VELOCITY,
+                            Resource_Manager::get_texture("ball"));
+ 
+-    auto testLamda = [](void* userdata, Uint8* stream, int len)
+-    { std::cout << "this my sound" << std::endl; };
+-
+     SDL_AudioSpec desired_spec;
+     desired_spec.freq     = 44100;
+     desired_spec.format   = SDL_AUDIO_S16;
+     desired_spec.channels = 2;
+     desired_spec.samples  = 512;
+-    desired_spec.callback = testLamda;
++    desired_spec.callback = sdl_audio_callback;
+ 
+     desired_spec.userdata = &m_audio_player;
+     device                = SDL_OpenAudioDevice(
+diff --git a/final/imgui_pack/CMakeLists.txt b/final/imgui_pack/CMakeLists.txt
+index b946125..af9fdaa 100644
+--- a/final/imgui_pack/CMakeLists.txt
++++ b/final/imgui_pack/CMakeLists.txt
+@@ -26,4 +26,6 @@ set(IMGUI_SOURCES
+ 
+ add_library(imgui_pack ${IMGUI_SOURCES})
+ 
+-target_include_directories(imgui_pack PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+\ No newline at end of file
++target_include_directories(imgui_pack PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
++
++target_include_directories(imgui_pack PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../submodules/SDL/include)
+\ No newline at end of file

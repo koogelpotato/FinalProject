@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.26)
 project(project_engine)
 
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../submodules/SDL
+                 ${CMAKE_BINARY_DIR}/SDL)
+
 add_subdirectory(imgui_pack)
 
 add_library(image_engine
@@ -32,13 +35,13 @@ add_library(loader
 
 target_link_libraries(image_engine PRIVATE loader)
 
-find_package(SDL3 REQUIRED)
+# find_package(SDL3 REQUIRED)
 
 find_package(OpenGL REQUIRED)
 
 target_include_directories(image_engine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/glm)
 
-target_link_libraries(image_engine PRIVATE SDL3::SDL3-shared OpenGL::GL)
+target_link_libraries(image_engine PUBLIC SDL3::SDL3-shared OpenGL::GL)
 target_link_libraries(image_engine PRIVATE imgui_pack)
 
 add_executable(image main.cpp)

@@ -130,15 +130,12 @@ void Game::init_game()
                            INITIAL_BALL_VELOCITY,
                            Resource_Manager::get_texture("ball"));
 
-    auto testLamda = [](void* userdata, Uint8* stream, int len)
-    { std::cout << "this my sound" << std::endl; };
-
     SDL_AudioSpec desired_spec;
     desired_spec.freq     = 44100;
     desired_spec.format   = SDL_AUDIO_S16;
     desired_spec.channels = 2;
     desired_spec.samples  = 512;
-    desired_spec.callback = testLamda;
+    desired_spec.callback = sdl_audio_callback;
 
     desired_spec.userdata = &m_audio_player;
     device                = SDL_OpenAudioDevice(
