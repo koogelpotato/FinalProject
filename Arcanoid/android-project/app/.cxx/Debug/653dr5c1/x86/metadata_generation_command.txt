@@ -1,0 +1,20 @@
+                        -H/home/koogel/AndroidStudioProjects/Arcanoid
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=22
+-DANDROID_PLATFORM=android-22
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=/home/koogel/Android/Sdk/ndk/25.2.9519653
+-DCMAKE_ANDROID_NDK=/home/koogel/Android/Sdk/ndk/25.2.9519653
+-DCMAKE_TOOLCHAIN_FILE=/home/koogel/Android/Sdk/ndk/25.2.9519653/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86
+-DCMAKE_BUILD_TYPE=Debug
+-B/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86
+-GNinja
+-DANDROID_STL=c++_shared
+-DSDL3_SRC_DIR=/home/koogel/SDL/
+                        Build command args: []
+                        Version: 2

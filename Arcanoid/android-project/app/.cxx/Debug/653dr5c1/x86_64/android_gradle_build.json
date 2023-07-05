@@ -1,0 +1,100 @@
+{
+  "buildFiles": [
+    "/home/koogel/AndroidStudioProjects/Arcanoid/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/final/glad/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/3rdparty.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/CheckCPUArchitecture.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/SDL3Config.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/cmake_uninstall.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/macros.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlchecks.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlfind.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlmanpages.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlplatform.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_build_config.h.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_revision.h.cmake"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/usr/bin/ninja",
+      "-C",
+      "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/usr/bin/ninja",
+    "-C",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "SDL3-shared::@89a468c2df442619b090": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "SDL3-shared",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libSDL3.so",
+      "runtimeFiles": []
+    },
+    "SDL3_test::@89a468c2df442619b090": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "SDL3_test",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/SDL/libSDL3_test.a"
+    },
+    "glad::@81d5be68b47c2560a4f0": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "glad",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/glad/libglad.a"
+    },
+    "image::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "image",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libimage.so",
+      "runtimeFiles": [
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libimage_engine.so",
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libSDL3.so"
+      ]
+    },
+    "image_engine::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "image_engine",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libimage_engine.so",
+      "runtimeFiles": [
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libloader.so",
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libSDL3.so"
+      ]
+    },
+    "loader::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "loader",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/x86_64/libloader.so",
+      "runtimeFiles": []
+    },
+    "uninstall::@89a468c2df442619b090": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "uninstall"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/koogel/Android/Sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/koogel/Android/Sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cxx",
+    "cpp"
+  ]
+}

@@ -1,0 +1,15 @@
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/SDL/CMakeFiles/SDL3-shared.dir/cmake_pch.h
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/SDL/CMakeFiles/SDL3-shared.dir/cmake_pch.hxx
+/home/koogel/AndroidStudioProjects/Arcanoid/final/glad/glad.h
+/home/koogel/AndroidStudioProjects/Arcanoid/final/resource-manager.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/shader.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/sprite-renderer.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/texture.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/KHR/khrplatform.h
+/home/koogel/AndroidStudioProjects/Arcanoid/final/game-object.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/game-level.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/ball-object.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/sound-manager.hpp
+/home/koogel/AndroidStudioProjects/Arcanoid/final/stb_image.h
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/SDL/CMakeFiles/uninstall
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/x86_64/final/SDL/CMakeFiles/uninstall.rule

@@ -1,0 +1,83 @@
+{
+  "buildFiles": [
+    "/home/koogel/AndroidStudioProjects/Arcanoid/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/final/glad/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/CMakeLists.txt",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/3rdparty.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/CheckCPUArchitecture.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/SDL3Config.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/cmake_uninstall.cmake.in",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/macros.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlchecks.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlfind.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlmanpages.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlplatform.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_build_config.h.cmake",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_revision.h.cmake"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/usr/bin/ninja",
+      "-C",
+      "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/usr/bin/ninja",
+    "-C",
+    "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "SDL3_test::@89a468c2df442619b090": {
+      "artifactName": "SDL3_test",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/armeabi-v7a/final/SDL/libSDL3_test.a",
+      "runtimeFiles": []
+    },
+    "image_engine::@6890427a1f51a3e7e1df": {
+      "artifactName": "image_engine",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libimage_engine.so",
+      "runtimeFiles": [
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libloader.so",
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libSDL3.so"
+      ]
+    },
+    "image::@6890427a1f51a3e7e1df": {
+      "artifactName": "image",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libimage.so",
+      "runtimeFiles": [
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libimage_engine.so",
+        "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libSDL3.so"
+      ]
+    },
+    "uninstall::@89a468c2df442619b090": {
+      "artifactName": "uninstall",
+      "abi": "armeabi-v7a",
+      "runtimeFiles": []
+    },
+    "loader::@6890427a1f51a3e7e1df": {
+      "artifactName": "loader",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libloader.so",
+      "runtimeFiles": []
+    },
+    "SDL3-shared::@89a468c2df442619b090": {
+      "artifactName": "SDL3-shared",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/build/intermediates/cxx/Debug/653dr5c1/obj/armeabi-v7a/libSDL3.so",
+      "runtimeFiles": []
+    },
+    "glad::@81d5be68b47c2560a4f0": {
+      "artifactName": "glad",
+      "abi": "armeabi-v7a",
+      "output": "/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/Debug/653dr5c1/armeabi-v7a/final/glad/libglad.a",
+      "runtimeFiles": []
+    }
+  }
+}

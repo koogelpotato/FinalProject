@@ -1,0 +1,16 @@
+/home/koogel/AndroidStudioProjects/Arcanoid/CMakeLists.txt
+/home/koogel/AndroidStudioProjects/Arcanoid/final/glad/CMakeLists.txt
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/CMakeLists.txt
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/3rdparty.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/CheckCPUArchitecture.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/GetGitRevisionDescription.cmake.in
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/SDL3Config.cmake.in
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/cmake_uninstall.cmake.in
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/macros.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlchecks.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlfind.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlmanpages.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/cmake/sdlplatform.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_build_config.h.cmake
+/home/koogel/AndroidStudioProjects/Arcanoid/submodules/SDL/include/build_config/SDL_revision.h.cmake

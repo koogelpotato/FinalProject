@@ -1,0 +1,13 @@
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/CMakeFiles/image_engine.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/CMakeFiles/loader.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/CMakeFiles/image.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/CMakeFiles/edit_cache.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/CMakeFiles/rebuild_cache.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/SDL/CMakeFiles/SDL3-shared.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/SDL/CMakeFiles/SDL3_test.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/SDL/CMakeFiles/uninstall.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/SDL/CMakeFiles/edit_cache.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/SDL/CMakeFiles/rebuild_cache.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/glad/CMakeFiles/glad.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/glad/CMakeFiles/edit_cache.dir
+/home/koogel/AndroidStudioProjects/Arcanoid/android-project/app/.cxx/RelWithDebInfo/j3tyf3n3/x86/final/glad/CMakeFiles/rebuild_cache.dir
