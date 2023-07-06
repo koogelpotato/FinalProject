@@ -1,6 +1,8 @@
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 #include <SDL3/SDL.h>
+#include <SDL3/SDL>
+#include <SDL3/SDL_main.h>
 #include <SDL3/SDL_audio.h>
 //#include "imgui_pack/imgui.h"
 //#include "imgui_pack/imgui_impl_opengl3.h"
