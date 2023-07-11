@@ -1,5 +1,6 @@
 #include "resource-manager.hpp"
 
+#include <SDL3/SDL.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -55,24 +56,47 @@ Shader Resource_Manager::load_shader_from_file(const char* vertex_shader_file,
     std::string fragmentCode;
     try
     {
+        SDL_RWops* vertexShaderFile = SDL_RWFromFile(vertex_shader_file, "r");
+        SDL_RWops* fragmentShaderFile = SDL_RWFromFile(fragment_shader_file, "r");
 
-        std::ifstream     vertexShaderFile(vertex_shader_file);
-        std::ifstream     fragmentShaderFile(fragment_shader_file);
-        std::stringstream vertex_shader_stream, fragment_shader_stream;
+        if (vertexShaderFile == nullptr || fragmentShaderFile == nullptr)
+        {
+            std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
+            return Shader(); // Return an empty shader or handle the error appropriately
+        }
 
-        vertex_shader_stream << vertexShaderFile.rdbuf();
-        fragment_shader_stream << fragmentShaderFile.rdbuf();
+        // Get the file size
+        Sint64 vertexFileSize = SDL_RWsize(vertexShaderFile);
+        Sint64 fragmentFileSize = SDL_RWsize(fragmentShaderFile);
 
-        vertexShaderFile.close();
-        fragmentShaderFile.close();
+        // Allocate memory for the file contents
+        char* vertexFileData = new char[vertexFileSize + 1];
+        char* fragmentFileData = new char[fragmentFileSize + 1];
 
-        vertexCode   = vertex_shader_stream.str();
-        fragmentCode = fragment_shader_stream.str();
+        // Read the file contents into memory
+        SDL_RWread(vertexShaderFile, vertexFileData, vertexFileSize);
+        SDL_RWread(fragmentShaderFile, fragmentFileData, fragmentFileSize);
+
+        // Null-terminate the file contents
+        vertexFileData[vertexFileSize] = '\0';
+        fragmentFileData[fragmentFileSize] = '\0';
+
+        // Close the file handles
+        SDL_RWclose(vertexShaderFile);
+        SDL_RWclose(fragmentShaderFile);
+
+        vertexCode = vertexFileData;
+        fragmentCode = fragmentFileData;
+
+        // Free the allocated memory
+        delete[] vertexFileData;
+        delete[] fragmentFileData;
     }
     catch (std::exception e)
     {
         std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
     }
+
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
 
@@ -86,13 +110,35 @@ Texture Resource_Manager::load_texture_from_file(const char* file)
 
     Texture texture;
 
-    int            width, height, nrChannels;
-    unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
+    SDL_RWops* fileRW = SDL_RWFromFile(file, "rb");
+
+    if (fileRW == nullptr)
+    {
+        // TODO: Better error handling
+        assert(false);
+        return texture;
+    }
+
+    // Get the file size
+    Sint64 fileSize = SDL_RWsize(fileRW);
+
+    // Allocate memory for the file contents
+    unsigned char* fileData = new unsigned char[fileSize];
+
+    // Read the file contents into memory
+    SDL_RWread(fileRW, fileData, fileSize);
+
+    // Close the file handle
+    SDL_RWclose(fileRW);
+
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load_from_memory(fileData, fileSize, &width, &height, &nrChannels, 0);
 
     if (data == nullptr)
     {
         // TODO: Better error handling
         assert(false);
+        delete[] fileData;
         return texture;
     }
 
@@ -108,5 +154,7 @@ Texture Resource_Manager::load_texture_from_file(const char* file)
     texture.generate(width, height, data);
 
     stbi_image_free(data);
+    delete[] fileData;
+
     return texture;
 }

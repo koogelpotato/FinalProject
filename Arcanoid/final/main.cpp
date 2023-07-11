@@ -1,9 +1,21 @@
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 #include <SDL3/SDL.h>
-#include <SDL3/SDL>
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL_audio.h>
+#ifdef __ANDROID__
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
+#include <android/log.h>
+#include "glad/glad.h"
+
+#define GL_GLES_PROTOTYPES 1
+#include <GLES3/gl3.h>
+#define glActiveTexture_ glActiveTexture
+#else
+#include <SDL3/SDL.h>
+#include "glad/glad.h"
+#endif
 //#include "imgui_pack/imgui.h"
 //#include "imgui_pack/imgui_impl_opengl3.h"
 //#include "imgui_pack/imgui_impl_sdl3.h"
@@ -13,8 +25,8 @@
 
 #include <iostream>
 
-const unsigned int SCREEN_WIDTH = 600;
-const unsigned int SCREEN_HEIGHT = 600;
+unsigned int SCREEN_WIDTH = 600;
+unsigned int SCREEN_HEIGHT = 600;
 
 
 SDL_Window* window;
@@ -47,6 +59,19 @@ int main(int argc, char* argv[])
     }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
+
+    #ifdef __ANDROID__
+      {
+        const SDL_DisplayMode* dispale_mode = SDL_GetCurrentDisplayMode(1);
+        if (!dispale_mode) {
+          std::cout << "can't get current display mode: " << SDL_GetError() << std::endl;
+        }
+        SCREEN_WIDTH = dispale_mode->w;
+        SCREEN_HEIGHT = dispale_mode->h;
+        std::cout << SCREEN_WIDTH << SCREEN_HEIGHT << std::endl;
+      }
+    #endif
+
     window = SDL_CreateWindow("window", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
     if (window == nullptr)
     {
@@ -56,7 +81,11 @@ int main(int argc, char* argv[])
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+
+    #ifdef __ANDROID__
+      int gl_context_profile = SDL_GL_CONTEXT_PROFILE_ES;
+    #endif
 
     gl_context = SDL_GL_CreateContext(window);
     if (gl_context == nullptr)
@@ -64,6 +93,13 @@ int main(int argc, char* argv[])
         std::cerr << "error SDL_GL_CreateContext: " << SDL_GetError() << std::endl;
         return -1;
     }
+    /*#ifndef __ANDROID__
+
+      auto load_gl_pointer = [](const char* function_name) {
+        SDL_FunctionPointer function_ptr = SDL_GL_GetProcAddress(function_name);
+        return reinterpret_cast<void*>(function_ptr);
+      };
+    #endif*/
 
     if (!gladLoadGLES2Loader((GLADloadproc)SDL_GL_GetProcAddress))
     {

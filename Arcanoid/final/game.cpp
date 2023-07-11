@@ -101,7 +101,7 @@ void Game::init_game()
     Resource_Manager::get_shader("sprite").set_matrix4("projection",
                                                        projection);
 
-    renderer = new Sprite_Renderer(Resource_Manager::get_shader("sprite"));
+    renderer = new Sprite_Renderer(Resource_Manager::get_shader("sprite")); 
 
     Resource_Manager::load_texture("resources/textures/block.png", "block");
     Resource_Manager::load_texture("resources/textures/paddle.png", "paddle");

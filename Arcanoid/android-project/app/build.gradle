@@ -17,7 +17,7 @@ if (sdl3Dir == null)
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     ndkVersion '25.2.9519653'
 
     defaultConfig {

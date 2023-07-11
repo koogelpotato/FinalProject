@@ -62,7 +62,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	target_link_libraries(
 	glad
 	android
-	log
+			log
 	EGL
 	GLESv3)
 
